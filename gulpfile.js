@@ -2,28 +2,28 @@ let {src, dest, parallel, series, watch} = require('gulp');
 
 const ghpages      = require('gh-pages');
 const path         = require('path');
-const devserver    = require('browser-sync').create();
+const browserSync = require('browser-sync').create();
 const del          = require('del');
-const plumber      = require('gulp-plumber');
 const pug          = require('gulp-pug');
 const sass         = require('gulp-sass');
 const postcss      = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano      = require('cssnano');
 const imagemin     = require('gulp-imagemin');
-const newer        = require('gulp-newer');
 const typograf     = require('gulp-typograf');
+const uglify       = require('gulp-uglify-es').default;
 
 function ghPages(cb) {
   ghpages.publish(path.join(process.cwd(), './build'), cb);
 }
 
 function devServer() {
-  devserver.init({
+  browserSync.init({
     server: { baseDir: './build'},
-    watch: true,
+    // watch: true,
     reloadDebounce: 150,
     notify: false,
+    online: true
   });
 }
 
@@ -45,20 +45,15 @@ function buildStyles() {
 }
 
 function buildImages() {
-  return src('src/images/**/*')
-    .pipe(newer('build/images'))
+  return src('src/images/**/*.*')
     .pipe(imagemin())
-    .pipe(dest('build/images'));
+    .pipe(dest('build/images/'))
 }
 
 function buildScripts() {
   return src('src/scripts/**/*.js')
+    .pipe(uglify())
     .pipe(dest('build/scripts/'));
-}
-
-function buildAssets() {
-  return src('src/images/**/*.*')
-    .pipe(dest('build/images/'));
 }
 
 function buildFonts() {
@@ -71,25 +66,24 @@ function clearBuild() {
 }
 
 function watchFiles() {
-  watch('src/pages/*.pug', buildPages);
   watch('src/styles/*.scss', buildStyles);
   watch('src/scripts/**/*.js', buildScripts);
-  watch('src/images/**/*.*', buildAssets);
+  watch('src/pages/*.pug', buildPages);
   watch('src/images/**/*.*', buildFonts);
+  watch('src/images/**/*.*', buildImages);
 }
 
 exports.pages = ghPages;
+exports.imagemin = imagemin;
 exports.default =
   series(
     clearBuild,
     parallel(
       devServer,
       series(
-        parallel(buildPages, buildStyles, buildScripts, buildAssets, buildFonts),
+        parallel(buildPages, buildStyles, buildScripts, buildFonts, buildImages),
         watchFiles
       )
     )
   );
-
-// exports.default = parallel(buildStyles, buildScripts, devServer, watchFiles)
 
