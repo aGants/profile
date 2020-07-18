@@ -4,6 +4,7 @@ const ghpages      = require('gh-pages');
 const path         = require('path');
 const browserSync = require('browser-sync').create();
 const del          = require('del');
+const plumber      = require('gulp-plumber');
 const pug          = require('gulp-pug');
 const sass         = require('gulp-sass');
 const postcss      = require('gulp-postcss');
@@ -20,7 +21,7 @@ function ghPages(cb) {
 function devServer() {
   browserSync.init({
     server: { baseDir: './build'},
-    // watch: true,
+    watch: true,
     reloadDebounce: 150,
     notify: false,
     online: true
@@ -47,7 +48,7 @@ function buildStyles() {
 function buildImages() {
   return src('src/images/**/*.*')
     .pipe(imagemin())
-    .pipe(dest('build/images/'))
+    .pipe(dest('build/images/'));
 }
 
 function buildScripts() {
@@ -66,22 +67,21 @@ function clearBuild() {
 }
 
 function watchFiles() {
+  watch('src/pages/*.pug', buildPages);
   watch('src/styles/*.scss', buildStyles);
   watch('src/scripts/**/*.js', buildScripts);
-  watch('src/pages/*.pug', buildPages);
   watch('src/images/**/*.*', buildFonts);
   watch('src/images/**/*.*', buildImages);
 }
 
 exports.pages = ghPages;
-exports.imagemin = imagemin;
 exports.default =
   series(
     clearBuild,
     parallel(
       devServer,
       series(
-        parallel(buildPages, buildStyles, buildScripts, buildFonts, buildImages),
+        parallel(buildPages, buildStyles, buildScripts, buildImages, buildFonts),
         watchFiles
       )
     )
