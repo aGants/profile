@@ -1,0 +1,52 @@
+doctype html
+html(lang="ru")
+  head
+    meta(property="og:locale" content="ru_RU")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://agants.github.io/about-me/")
+    meta(property="og:title" content="Страница обо мне")
+    meta(property="og:description" content="Немного об Аделе")
+    meta(property="og:image" content="image/og.jpg")
+    meta(property="og:image:alt" content="Про Аделю")
+    meta(property="og:image:width" content="510")
+    meta(property="og:image:height" content="228")
+    title Страница обо мне
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="styles/style.css")
+body
+  header.header
+    div.header__button.switch-on
+    h1.header__title Страница обо мне
+  main.block
+    div(itemscope itemtype='https://schema.org/Person').block-image
+      img(src="images/avatar.png" alt="картинка со мной" itemprop='image').block-image__image
+    div(itemscope itemtype='https://schema.org/Person').block-about
+      h2.block-about__title Немного обо мне
+      p.block-about__text Меня зовут <span itemprop='additionalName'>Аделя</span>, я живу в <span itemprop="address">спб</span>, и этой весной мне минуло 23 года. 
+      p.block-about__text В этом году я окончила университет <span itemprop="alumniOf">(спбгуптд)</span>, 
+        |научившись там немножко верстать, программировать, рисовать, создавать 3д модели и заучивать
+        |большое количество информации за рекордное время.
+      p.block-about__text Кроме постигания премудростей фронтенда, я играю в компьютерные игры, читаю комиксы и пишу небольшие рассказы
+        |в стол, иногда показывая их друзьям.
+    div.block-movies
+      h2.block-movies__title Любимые фильмы
+      ul.block-movies__list
+       li(itemscope itemtype='https://schema.org/Movie')
+        a(itemprop='name').block-movies__list-link(href="https://www.kinopoisk.ru/film/88212/") «Behind the Mask: The Rise of Leslie Vernon»
+        p.block-movies__list-genre <span itemprop='datePublished'>2006</span>; <span itemprop='genre'>ужасы, триллер, комедия</span>
+       li(itemscope itemtype='https://schema.org/Movie')
+        a(itemprop='name').block-movies__list-link(href="https://www.kinopoisk.ru/film/818981/") «What We Do in the Shadows»
+        p.block-movies__list-genre <span itemprop='datePublished'>2014</span>; <span itemprop='genre'>ужасы, комедия</span>
+       li(itemscope itemtype='https://schema.org/Movie')
+        a(itemprop='name').block-movies__list-link(href="https://www.kinopoisk.ru/film/64021/") «Shaun of the Dead»
+        p.block-movies__list-genre <span itemprop='datePublished'>2004</span>; <span itemprop='genre'>ужасы, комедия</span>
+       li(itemscope itemtype='https://schema.org/Movie')
+        a.block-movies__list-link(href="https://www.kinopoisk.ru/film/410299/") «The World's End»
+        p.block-movies__list-genre <span itemprop='datePublished'>2013</span>; <span itemprop='genre'>комедия, фантастика, боевик</span>
+       li(itemscope itemtype='https://schema.org/Movie')
+        a(itemprop='name').block-movies__list-link(href="https://www.kinopoisk.ru/film/1178137/") «Midsommar»
+        p.block-movies__list-genre <span itemprop='datePublished'>2019</span>; <span itemprop='genre'>ужасы, триллер, драма</span>
+       li(itemscope itemtype='https://schema.org/Movie')
+        a(itemprop='name').block-movies__list-link(href="https://www.kinopoisk.ru/film/467293/") «Filth»
+        p.block-movies__list-genre <span itemprop='datePublished'>2013</span>; <span itemprop='genre'>комедия, драма, криминал</span>
+  <script src="scripts/script.js"></script>

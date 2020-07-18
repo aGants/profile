@@ -1,0 +1,32 @@
+$screen-sm: 375px;
+$screen-md: 768px;
+$screen-lg: 1200px;
+$screen-xl: 1440px;
+
+:root {
+  --bgcolor: #f9f9f9;
+  --main-color: #f3efea;
+  --color-text: #0d1011;
+  --color-hover: #a72a38;
+  --color-movie-genre: #717475;  
+  --button-hover: #1d2427;
+  --image-filter: none;
+  --button-bgcolor: #fff;
+  --button-shadow: #999999;
+}
+
+:root[theme=dark] {
+  --bgcolor: #222429;
+  --main-color: #191a1d;
+  --color-text: #e1e2e2;
+  --button-hover: #cdcecf;
+  --color-hover: #ffeddc;
+  --image-filter: grayscale(.75);
+}
+
+$font-title: bold 2.5em Open Sans, Arial, sans-serif;
+$block-title: bold 1.4em Open Sans, Arial, sans-serif;
+$block-text: 0.9em/1.5em Verdana, Arial, sans-serif;
+
+
+

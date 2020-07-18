@@ -1,0 +1,29 @@
+@import 'vars.scss', 'mixins.scss';
+
+%block-text-margin {
+  margin: 2vh 8vw;
+  @include w-from($screen-lg){
+    margin: 20px 40px;
+  }
+}
+
+%block-style {
+  width: 90vw;
+  margin: 20px auto;
+  background-color: var(--main-color);
+
+  @include w-from($screen-lg){
+  width: 400px;
+  margin: 15px;
+  }
+}
+
+%block-title-style {
+  @extend %block-text-margin;
+  font: $block-title;
+}
+
+%block-text-style {
+  @extend %block-text-margin;
+  font: $block-text;
+}

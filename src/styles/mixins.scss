@@ -1,0 +1,34 @@
+//начиная с какого-то экрана
+@mixin w-from($screen) {
+  @media (min-width: $screen) {
+    @content;
+  }
+}
+
+//до какого-то экрана
+@mixin w-to($screen) {
+  @media (max-width: $screen - 1px) {
+    @content;
+  }
+}
+
+//2 размера экрана, не включая
+@mixin w-range($screen1, $screen2) {
+  @media (min-width: $screen1) and (max-width: $screen2 - 1px) {
+    @content;
+  }
+  
+}
+
+@mixin inc-click-area($size: 10px) {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -$size;
+    bottom: $size;
+    left: -$size;
+    right: -$size;
+  }
+}

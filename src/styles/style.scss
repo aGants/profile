@@ -1,0 +1,125 @@
+@import 'blocks.scss', 'fonts.scss', 'button.scss';
+*{
+  margin: 0;
+  padding: 0;
+} 
+
+body {
+  margin: auto;
+  background-color: var(--bgcolor);
+  color: var(--color-text);
+  word-wrap: break-word;
+  
+  @include w-from($screen-lg) {
+    max-width: 80vw;
+    margin: 50px auto;
+  }
+}
+
+.header { 
+  @include w-from($screen-md){
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+  }  
+
+  &__title {
+    margin-top: 2vh;
+    padding: 5vh 4vw;
+    font: $font-title;
+  }
+
+  &__button {
+    @extend %button-style; 
+    float: right;
+    margin-right: 10vw;
+    @include w-from($screen-lg) {
+      margin-right: 5vw;
+    }
+  }
+}
+
+.block {
+  margin: 0 ato;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @include w-from($screen-lg) {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
+  &-image {
+    @extend %block-style;
+    
+    &__image {
+      display: block;
+      max-width: 90%;
+      margin: 0 auto;
+      filter: var(--image-filter);
+      @include w-from($screen-lg) {
+        margin-top: 45px;
+      }
+    }
+  }
+
+  &-about {
+    @extend %block-style;
+
+    &__title {
+      @extend %block-title-style;
+      &:before {
+        @extend %about-icon;
+      }
+    }
+
+    &__text {
+     @extend %block-text-style;
+      text-align: justify;
+    }
+  }
+
+  &-movies {
+    @extend %block-style;
+
+    &__title {
+      @extend %block-title-style;
+      &:before {
+        @extend %movie-icon;
+      }
+    }
+
+    &__list {
+      @extend %block-text-style;
+      text-decoration: none;
+      list-style-type: none;
+
+      @include w-range($screen-md, $screen-lg) {
+        column-count: 2;
+      }
+
+      &-link {
+        @include inc-click-area;
+        &:link, &:visited,
+        &:hover,
+        &:after {
+          color: var(--color-text);
+          text-decoration: none;
+          list-style-type: none;
+        }
+        &:hover {
+          transition: .35s;
+          color: var(--color-hover);
+        }
+      }
+
+      &-genre {
+        margin-bottom: 15px;
+        color: var(--color-movie-genre);
+      }
+    }
+  }
+  
+}

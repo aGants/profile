@@ -1,0 +1,40 @@
+@import 'vars.scss';
+
+%button-style {
+  display: inline-block;
+  width: 3.5em;
+  height: 1.5em;
+  border-radius: 12px;
+  background: var(--button-hover);
+  z-index: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition-duration: 300ms;
+
+  &::after {
+    content: "";
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+    background: var(--color-text);
+    top: -6px;
+    left: -6px;
+    transition-duration: 300ms;
+    box-shadow: 0 0 10px 0 var(--button-shadow);
+    position: absolute;
+    z-index: 1;
+  }
+}
+
+.switch-on {
+  background: var(--button-light);
+  box-shadow: inset 0 0 10px 0 var(--button-shadow);
+
+  &::after {
+    left: 30px;
+    // background: button-bgcolor;
+  }
+}
