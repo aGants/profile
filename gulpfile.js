@@ -13,6 +13,7 @@ const cssnano      = require('cssnano');
 const imagemin     = require('gulp-imagemin');
 const typograf     = require('gulp-typograf');
 const uglify       = require('gulp-uglify-es').default;
+const concat       = require('gulp-concat');
 
 function ghPages(cb) {
   ghpages.publish(path.join(process.cwd(), './build'), cb);
@@ -38,6 +39,7 @@ function buildPages() {
 function buildStyles() {
   return src('src/styles/style.scss')
     .pipe(sass())
+    .pipe(concat('style.css'))
     .pipe(postcss([
       autoprefixer(),
       cssnano()
