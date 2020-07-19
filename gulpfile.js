@@ -30,7 +30,7 @@ function devServer() {
 }
 
 function buildPages() {
-  return src('src/pages/*.pug')
+  return src('src/pages/index.pug')
     .pipe(pug(/*{pretty: true}*/))
     .pipe(typograf({locale: ['ru', 'en-US'] }))
     .pipe(dest('build/'));
