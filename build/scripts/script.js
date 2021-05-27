@@ -1,1 +1,0 @@
-let themeBtn=document.querySelector(".header__button");themeBtn.addEventListener("click",(function(){document.documentElement.hasAttribute("theme")?(document.documentElement.removeAttribute("theme"),themeBtn.classList.add("switch-on")):(document.documentElement.setAttribute("theme","dark"),themeBtn.classList.remove("switch-on"))}));
