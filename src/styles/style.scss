@@ -1,5 +1,5 @@
 @import 'blocks.scss', 'fonts.scss', 'button.scss';
-*{
+* {
   margin: 0;
   padding: 0;
 } 
@@ -13,6 +13,20 @@ body {
   @include w-from($screen-lg) {
     max-width: 80vw;
     margin: 50px auto;
+  }
+}
+
+.link {
+  @include inc-click-area;
+  &:link, &:visited,
+  &:hover {
+    color: var(--color-link);
+    text-decoration: none;
+    list-style-type: none;
+  }
+  &:hover {
+    transition: .35s;
+    color: var(--color-hover);
   }
 }
 
@@ -97,21 +111,6 @@ body {
 
       @include w-range($screen-md, $screen-lg) {
         column-count: 2;
-      }
-
-      &-link {
-        @include inc-click-area;
-        &:link, &:visited,
-        &:hover,
-        &:after {
-          color: var(--color-text);
-          text-decoration: none;
-          list-style-type: none;
-        }
-        &:hover {
-          transition: .35s;
-          color: var(--color-hover);
-        }
       }
 
       &-genre {

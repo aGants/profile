@@ -8,20 +8,22 @@ $screen-xl: 1440px;
   --main-color: #f3efea;
   --color-text: #0d1011;
   --color-hover: #a72a38;
-  --color-movie-genre: #717475;  
+  --color-movie-genre: #999999;  
   --button-hover: #1d2427;
   --image-filter: none;
   --button-bgcolor: #fff;
   --button-shadow: #999999;
-}
+  --color-link: #4d4d4d;
+}	
 
 :root[theme=dark] {
   --bgcolor: #222429;
   --main-color: #191a1d;
-  --color-text: #e1e2e2;
+  --color-text: #ffffff;
   --button-hover: #cdcecf;
   --color-hover: #ffeddc;
   --image-filter: grayscale(.75);
+  --color-link: rgb(211, 187, 187);
 }
 
 $font-title: bold 2.5em Open Sans, Arial, sans-serif;
